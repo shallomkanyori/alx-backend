@@ -14,12 +14,14 @@ class LIFOCache(BaseCaching):
     def put(self, key, item):
         """Inserts an item into the cache"""
         if key and item:
-            if (len(self.cache_data) + 1) > BaseCaching.MAX_ITEMS:
-                del_key = self.cache_data.popitem()[0]
+            self.cache_data[key] = item
+
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+                keys = list(self.cache_data.keys())
+                del_key = keys[-2]
+                self.cache_data.pop(del_key)
 
                 print("DISCARD: {}".format(del_key))
-
-            self.cache_data[key] = item
 
     def get(self, key):
         """Returns the value of an item in the cache."""
