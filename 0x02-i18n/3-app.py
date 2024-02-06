@@ -4,6 +4,7 @@ Parameterize templates.
 """
 from flask import Flask, render_template, request
 from flask_babel import Babel
+from typing import Union
 
 
 class Config():
@@ -20,7 +21,7 @@ babel = Babel(app)
 
 
 @babel.localeselector
-def get_locale() -> str:
+def get_locale() -> Union[str, None]:
     """Gets the locale from the request"""
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
