@@ -88,7 +88,7 @@ def get_timezone() -> Union[str, None]:
 def home() -> str:
     """Returns a simple template"""
     return render_template("index.html",
-                           current_time=format_datetime(datetime.now()))
+                           curr_time=format_datetime(datetime.now()))
 
 
 if __name__ == "__main__":
