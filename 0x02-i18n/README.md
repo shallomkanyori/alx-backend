@@ -92,3 +92,15 @@ In your HTML template, if a user is logged in, in a paragraph tag, display a wel
 | --------------- | -------------------------------------- | ------------------------------------------------ |
 | `logged_in_as`  | `"You are logged in as %(username)s."` | `"Vous êtes connecté en tant que %(username)s."` |
 | `not_logged_in` | `"You are not logged in."`             | `"Vous n'êtes pas connecté."`                    |
+
+### Task 6
+Files: [6-app.py](6-app.py), [templates/6-index.html](templates/6-index.html)
+
+Change your `get_locale` function to use a user’s preferred local if it is supported.
+The order of priority should be
+1. Locale from URL parameters
+2. Locale from user settings
+3. Locale from request header
+4. Default locale
+
+Test by logging in as different users
