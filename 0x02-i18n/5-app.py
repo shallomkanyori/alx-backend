@@ -2,7 +2,7 @@
 """Basic Flask app with Babel.
 Mock logging in.
 """
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, g
 from flask_babel import Babel
 from typing import Union
 
@@ -47,7 +47,7 @@ def before_request():
     """Try to login in as a user."""
     user = get_user()
     if user:
-        flask.g.user = user
+        g.user = user
 
 
 @babel.localeselector
