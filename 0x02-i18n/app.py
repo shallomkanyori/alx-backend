@@ -9,7 +9,7 @@ from pytz import timezone
 from pytz.exceptions import UnknownTimeZoneError
 
 from typing import Union
-from datetime.datetime import now
+from datetime import datetime
 
 
 class Config():
@@ -87,7 +87,8 @@ def get_timezone() -> Union[str, None]:
 @app.route("/")
 def home() -> str:
     """Returns a simple template"""
-    return render_template("index.html", current_time=format_datetime(now()))
+    return render_template("index.html",
+                           current_time=format_datetime(datetime.now()))
 
 
 if __name__ == "__main__":
