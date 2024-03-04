@@ -46,6 +46,6 @@ describe('createPushNotificationJobs', function () {
   });
 
   it('should throw an error if jobs is not an array', function () {
-    expect(() => createPushNotificationsJobs('non list', queue)).to.throw('Jobs is not an array');
+    expect(() => createPushNotificationsJobs('non list', queue)).to.throw(Error, 'Jobs is not an array');
   });
 });
