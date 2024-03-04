@@ -124,3 +124,19 @@ publishMessage("Holberton Student #3 starts course", 400);
 Requirements:
 - You only need one Redis server to execute the program
 - You will need to have two node processes to run each script at the same time
+
+### Task 6
+In a file named `6-job_creator.js`:
+
+- Create a queue with `Kue`
+- Create an object containing the Job data with the following format:
+```
+{
+	phoneNumber: string,
+	message: string,
+}
+```
+- Create a queue named `push_notification_code`, and create a job with the object created before
+- When the job is created without error, log to the console `Notification job created: JOB ID`
+- When the job is completed, log to the console `Notification job completed`
+- When the job is failing, log to the console `Notification job failed`
