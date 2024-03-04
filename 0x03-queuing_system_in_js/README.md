@@ -216,3 +216,22 @@ After this array created:
 	 - On the job completion, log to the console `Notification job JOB_ID completed`
 	- On the job failure, log to the console `Notification job JOB_ID failed: ERROR`
 	- On the job progress, log to the console `Notification job JOB_ID PERCENTAGE% complete`
+	
+### Task 9
+In a file named `7-job_processor.js`:
+
+Create an array that will contain the blacklisted phone numbers. Add in it `4153518780` and `4153518781` - these 2 numbers will be blacklisted by our jobs processor.
+
+Create a function `sendNotification` that takes 4 arguments: `phoneNumber`, `message`, `job`, and `done`:
+- When the function is called, track the progress of the job of `0` out of `100`
+- If `phoneNumbe`r is included in the “blacklisted array”, fail the job with an `Error` object and the message: `Phone number PHONE_NUMBER is blacklisted`
+- Otherwise:
+	- Track the progress to 50%
+	- Log to the console `Sending notification to PHONE_NUMBER, with message: MESSAGE`
+	-
+Create a queue with `Kue` that will proceed job of the queue `push_notification_code_2` with two jobs at a time.
+
+Requirements:
+- You only need one Redis server to execute the program
+- You will need to have two node processes to run each script at the same time
+- You muse use `Kue` to set up the queue
