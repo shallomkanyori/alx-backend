@@ -61,16 +61,13 @@ app.get('/list_products', function (req, res) {
     data.push(itemJson);
   }
 
-  res.setHeader('Content-Type', 'application/json');
-  res.status(200).send(data);
+  res.json(data);
 });
 
 app.get('/list_products/:itemId', async function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-
   const item = getItemById(Number(req.params.itemId));
   if (!item) {
-    res.status(404).send({ status: 'Product not found' });
+    res.json({ status: 'Product not found' });
     return;
   }
 
@@ -83,24 +80,22 @@ app.get('/list_products/:itemId', async function (req, res) {
     currentQuantity: currQuantity
   };
 
-  res.status(200).send(data);
+  res.json(data);
 });
 
 app.get('/reserve_product/:itemId', async function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-
   const item = getItemById(Number(req.params.itemId));
   if (!item) {
-    res.status(404).send({ status: 'Product not found' });
+    res.json({ status: 'Product not found' });
     return;
   }
 
   const currQuantity = await getCurrentReservedStockById(item.id) ?? item.stock;
   if (currQuantity < 1) {
-    res.send({ status: 'Not enough stock available', itemId: item.id });
+    res.json({ status: 'Not enough stock available', itemId: item.id });
   } else {
     reserveStockById(item.id, currQuantity - 1);
-    res.status(200).send({ status: 'Reservation confirmed', itemId: item.id });
+    res.json({ status: 'Reservation confirmed', itemId: item.id });
   }
 });
 
