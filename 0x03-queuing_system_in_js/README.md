@@ -245,3 +245,15 @@ In a file named `8-job.js`, create a function named `createPushNotificationsJobs
 - When a job is complete, it should log to the console `Notification job JOB_ID completed`
 - When a job is failed, it should log to the console `Notification job JOB_ID failed: ERROR`
 - When a job is making progress, it should log to the console `Notification job JOB_ID PERCENT% complete`
+
+### Task 11
+Now that you created a job creator, let’s add tests:
+- Import the function `createPushNotificationsJobs`
+- Create a queue with `Kue`
+- Write a test suite for the `createPushNotificationsJobs` function:
+	- Use `queue.testMode` to validate which jobs are inside the queue
+	- etc.
+	-
+Requirements:
+- Make sure to enter the test mode without processing the jobs before executing the tests
+- Make sure to clear the queue and exit the test mode after executing the tests
